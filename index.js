@@ -39,7 +39,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/google/callback",
+      callbackURL: process.env.REPL_URL + "/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
       // Here you would typically save the profile and tokens to your database.
@@ -72,7 +72,7 @@ app.get(
     // Optionally, notify your Custom GPT or another service
     const userProfile = req.user;
     console.log(JSON.stringify(req.user));
-    await notifyCustomGPT(userProfile);
+    //await notifyCustomGPT(userProfile);
     res.redirect("/");
   },
 );
